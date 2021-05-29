@@ -26,7 +26,7 @@ class ReverseInteger {
 
     }
     private fun isNegative(x: Int): Boolean{
-        return if(x < 0) true else false
+        return x<0
     }
     private fun isInIntRange(value: Long) : Boolean {
         return if(value>2147483647 || value<-2147483648) false else true
