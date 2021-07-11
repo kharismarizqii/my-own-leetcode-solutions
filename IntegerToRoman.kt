@@ -3,38 +3,41 @@ package leetcode
 class IntegerToRoman {
     fun intToRoman(num: Int): String {
         var newNum = num
-        var result = ""
+        val sb = StringBuilder()
         while(newNum>0){
             if(newNum>=1000){
-                result+="M"
+                sb.append('M')
                 newNum-=1000
             }
             else if(newNum>=500){
-                result+="D"
+                sb.append('D')
                 newNum-=500
             }
             else if(newNum>=100){
-                result+="C"
+                sb.append('C')
                 newNum-=100
             }
             else if(newNum>=50){
-                result+="L"
+                sb.append('L')
                 newNum-=50
             }
             else if(newNum>=10){
-                result+="X"
+                sb.append('X')
                 newNum-=10
 
             }
             else if(newNum>=5){
-                result+="V"
+                sb.append('V')
                 newNum-=5
             }
             else if(newNum>=1){
-                result+="I"
+                sb.append('I')
                 newNum-=1
             }
         }
+
+        var result = sb.toString()
+
         if(result.contains("IIII")){
             result = result.replace("IIII","IV")
         }
