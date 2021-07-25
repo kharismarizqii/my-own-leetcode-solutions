@@ -6,6 +6,7 @@ class ValidParentheses {
     fun isValid(s: String): Boolean {
         val stack = Stack<Char>()
         var result = true
+        var pair : Char
         for(c in s){
             if(c == '(' || c == '[' || c == '{'){
                 stack.push(c)
@@ -15,23 +16,12 @@ class ValidParentheses {
                 result = false
                 break
             }
-            val pair = stack.pop()
-            when(c){
-                ')' -> {
-                    if(pair == '[' || pair == '{'){
-                        result = false
-                    }
-                }
-                ']'-> {
-                    if(pair == '(' || pair == '{'){
-                        result = false
-                    }
-                }
-                '}'-> {
-                    if(pair == '(' || pair == '['){
-                        result = false
-                    }
-                }
+            pair = stack.pop()
+            result = when{
+                (c==')' && (pair == '[' || pair == '{'))-> false
+                (c==']' && (pair == '(' || pair == '{'))-> false
+                (c=='}' && (pair == '(' || pair == '['))-> false
+                else -> result
             }
         }
         if(!stack.isEmpty()) result = false
