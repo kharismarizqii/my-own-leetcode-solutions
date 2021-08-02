@@ -5,15 +5,16 @@ import java.util.*
 class SetMismatch {
     fun findErrorNums(nums: IntArray): IntArray {
         var duplicate = 0
-        val list = ArrayList<Int>()
-        for((i,value) in nums.withIndex()){
-            if(!list.contains(value)){
-                list.add(value)
-            }else{
-                duplicate = value
+        var found = false
+        val set = HashSet<Int>()
+        for((i,v) in nums.withIndex()){
+            set.add(v)
+            if (i == set.size && !found){
+                duplicate = v
+                found = true
             }
         }
-        val difference = (1..nums.size).toCollection(ArrayList<Int>()).minus(list)
+        val difference = (1..nums.size).toCollection(ArrayList<Int>()).minus(set)
         return intArrayOf(duplicate, difference[0])
     }
 }
