@@ -9,8 +9,8 @@ class HappyNumber {
             fast = digitSquareSum(fast)
             fast = digitSquareSum(fast)
         }while(slow!=fast)
-        if(slow == 1) return true
-        else return false
+        
+        return slow == 1
     }
 
     fun digitSquareSum(num: Int): Int{
