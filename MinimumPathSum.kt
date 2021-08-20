@@ -33,7 +33,3 @@ class MinimumPathSum {
 
 
 }
-
-fun main(){
-
-}
